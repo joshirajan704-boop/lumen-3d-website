@@ -101,6 +101,11 @@
     pointer-events:none;
   }
   .scene-stage > *{ pointer-events:auto; }
+  @media (max-width:480px){
+    .scene-stage{ padding: 0 18px; }
+    .headline{ max-width:340px; margin:0 auto; }
+    .sub{ max-width:300px; }
+  }
 
   .eyebrow{
     font-size:11px; letter-spacing:0.3em; color:var(--cyan); opacity:0.85; margin-bottom:14px;
@@ -388,8 +393,12 @@
     scene = new THREE.Scene();
     scene.fog = new THREE.FogExp2(0x07070a, 0.055);
 
-    camera = new THREE.PerspectiveCamera(42, W/H, 0.1, 100);
+    camera = new THREE.PerspectiveCamera(isMobile ? 58 : 42, W/H, 0.1, 100);
     camera.position.set(0, 0, 8);
+
+    var worldGroup = new THREE.Group();
+    var worldScale = isMobile ? 0.56 : 1;
+    worldGroup.scale.setScalar(worldScale);
 
     /* ---------- LIGHTING ---------- */
     var hemi = new THREE.HemisphereLight(0x9fb8ff, 0x0a0a10, 0.55);
@@ -452,7 +461,7 @@
     g0.add(particles0);
 
     g0.position.set(0,0,0);
-    scene.add(g0);
+    worldGroup.add(g0);
 
     /* ============================================================
        GROUP 1 — MACHINE
@@ -512,7 +521,7 @@
     g1.add(g1Mirror);
 
     g1.position.set(0,-0.3,0);
-    scene.add(g1);
+    worldGroup.add(g1);
 
     /* ============================================================
        GROUP 2 — PERFORMANCE / HUD
@@ -536,7 +545,7 @@
     g2.add(coreRing2);
 
     g2.position.set(0,0,0);
-    scene.add(g2);
+    worldGroup.add(g2);
 
     /* ============================================================
        GROUP 3 — HEADPHONES
@@ -566,7 +575,7 @@
     });
 
     g3.position.set(0,0.15,0);
-    scene.add(g3);
+    worldGroup.add(g3);
 
     /* ============================================================
        GROUP 4 — HABITAT CORRIDOR
@@ -595,7 +604,7 @@
     g4.add(particles4);
 
     g4.position.set(0,0,-4);
-    scene.add(g4);
+    worldGroup.add(g4);
 
     /* ============================================================
        GROUP 5 — FINALE (recomposition)
@@ -613,7 +622,8 @@
     g5.add(fRing2);
 
     g5.position.set(0,0,0);
-    scene.add(g5);
+    worldGroup.add(g5);
+    scene.add(worldGroup);
 
     var allGroups = [g0,g1,g2,g3,g4,g5];
 
@@ -646,6 +656,10 @@
       { pos:new THREE.Vector3(0,0.3,2.4), look:new THREE.Vector3(0,0,-6) },   // end scene4 / start scene5
       { pos:new THREE.Vector3(0,0.4,5.2), look:new THREE.Vector3(0,0,0) }     // end scene5
     ];
+    if(isMobile){
+      // pull the camera back slightly on narrow portrait screens for extra framing margin
+      waypoints.forEach(function(w){ w.pos.multiplyScalar(1.15); });
+    }
 
     /* ---------- SCROLL DRIVEN PROGRESS (GSAP ScrollTrigger) ---------- */
     gsap.registerPlugin(ScrollTrigger);
