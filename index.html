@@ -1,13 +1,777 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LUMEN V2</title><style>
-*{box-sizing:border-box}html{background:#050509;color:#fff;font-family:Arial,sans-serif;scroll-behavior:smooth}body{margin:0;overflow-x:hidden}.bar{position:fixed;top:0;left:0;height:2px;background:#8b6cff;width:0;z-index:20}nav{position:fixed;z-index:10;top:0;width:100%;display:flex;justify-content:space-between;padding:22px 6vw;font-size:12px;letter-spacing:3px}.s{min-height:100svh;padding:110px 7vw 60px;display:flex;align-items:center;position:relative;overflow:hidden;border-bottom:1px solid #15151c}.c{max-width:760px;position:relative;z-index:2}.tag{font-size:10px;letter-spacing:4px;color:#aaa;margin-bottom:22px}h1,h2{font-size:clamp(52px,10vw,140px);line-height:.88;letter-spacing:-5px;margin:0;text-transform:uppercase}.o{color:transparent;-webkit-text-stroke:1px #aaa}p{color:#aaa;line-height:1.7;max-width:520px}.btn{display:inline-block;border:1px solid #555;border-radius:30px;padding:15px 22px;margin-top:15px}.orb{position:absolute;width:55vw;max-width:700px;aspect-ratio:1;border-radius:50%;right:-8vw;background:radial-gradient(circle at 65% 35%,#7d6cff,#21193c 24%,#08080e 62%);box-shadow:0 0 100px #392b7955}.ring{position:absolute;width:75vw;aspect-ratio:1;border:1px solid #8b6cff44;border-radius:50%;right:-20vw;transform:rotateX(70deg)}.car{position:absolute;width:55vw;height:210px;right:-4vw;border-radius:60% 45% 18% 18%;background:linear-gradient(155deg,#777,#302650 28%,#08080d 65%);box-shadow:0 35px 80px #5d47c733}.phones{position:absolute;width:35vw;aspect-ratio:1;right:8vw;border:32px solid #777;border-bottom-color:transparent;border-radius:50%;filter:drop-shadow(0 20px 45px #000)}.grid{position:absolute;inset:0;background:linear-gradient(120deg,transparent 45%,#64e8ff11 46%,transparent 47%),repeating-linear-gradient(110deg,transparent 0 60px,#ffffff0a 61px 62px)}.final{text-align:center;justify-content:center}.final .c{max-width:900px}.final p{margin:25px auto}.reveal{opacity:0;transform:translateY(35px)}
-@media(max-width:700px){nav{padding:20px}.s{padding:100px 22px 50px}.orb{width:105vw;right:-55vw}.ring{width:130vw;right:-70vw}.car{width:95vw;height:140px;right:-38vw;top:68%}.phones{width:70vw;right:-30vw;top:58%;border-width:22px}h1,h2{letter-spacing:-3px}}
-</style></head><body><div class="bar"></div><nav><b>LUMEN°</b><span>BEYOND ORDINARY</span></nav>
-<section class="s"><div class="orb"></div><div class="ring"></div><div class="c"><div class="tag reveal">THE CORE SERIES / 01</div><h1 class="reveal">BEYOND<br><span class="o">ORDINARY</span></h1><p class="reveal">A cinematic digital experience where engineered objects, light and space transform as you move.</p><div class="btn reveal">ENTER EXPERIENCE →</div></div></section>
-<section class="s"><div class="grid"></div><div class="c"><div class="tag reveal">SPATIAL DESIGN / 02</div><h2 class="reveal">DESIGNED<br>TO <span class="o">MOVE</span></h2><p class="reveal">Architecture becomes interface. Depth, geometry and light shift around the viewer.</p></div></section>
-<section class="s"><div class="car"></div><div class="c"><div class="tag reveal">MOTION SYSTEM / 03</div><h2 class="reveal">POWER<br>WITHOUT <span class="o">LIMITS</span></h2><p class="reveal">A sculpted machine suspended between performance and precision.</p></div></section>
-<section class="s"><div class="phones"></div><div class="c"><div class="tag reveal">IMMERSIVE AUDIO / 04</div><h2 class="reveal">HEAR THE<br><span class="o">UNSEEN</span></h2><p class="reveal">Precision geometry meets spatial sound in a premium product moment.</p></div></section>
-<section class="s"><div class="grid"></div><div class="c"><div class="tag reveal">FUTURE HABITAT / 05</div><h2 class="reveal">ENTER<br>THE <span class="o">FUTURE</span></h2><p class="reveal">Monolithic forms stretch beyond the viewport as the digital horizon opens.</p></div></section>
-<section class="s final"><div class="orb" style="right:22%;opacity:.55"></div><div class="c"><div class="tag reveal">THE NEXT DIMENSION</div><h2 class="reveal">READY TO<br><span class="o">GO BEYOND?</span></h2><p class="reveal">Built to feel less like a page and more like a product film you control.</p><div class="btn reveal">DISCOVER NOW ↗</div></div></section>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script><script>
-gsap.registerPlugin(ScrollTrigger);document.querySelectorAll('.reveal').forEach(e=>gsap.to(e,{opacity:1,y:0,duration:.9,scrollTrigger:{trigger:e,start:'top 88%'}}));gsap.to('.bar',{width:'100%',ease:'none',scrollTrigger:{trigger:document.documentElement,start:'top top',end:'bottom bottom',scrub:.2}});gsap.to('.orb',{scale:1.3,rotate:35,ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:1}});gsap.to('.car',{x:-150,ease:'none',scrollTrigger:{trigger:'.car',start:'top bottom',end:'bottom top',scrub:1}});gsap.to('.phones',{rotate:18,y:-80,ease:'none',scrollTrigger:{trigger:'.phones',start:'top bottom',end:'bottom top',scrub:1}});
-</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>LUMEN — Beyond The Ordinary</title>
+<meta name="description" content="LUMEN — an interactive product film. Scroll to travel through a world of titanium, glass, and light." />
+<style>
+  :root{
+    --near-black:#07070a;
+    --graphite:#131318;
+    --titanium:#b9bcc4;
+    --smoked:#1c1c22;
+    --violet:#4b2e83;
+    --electric:#8b5cf6;
+    --cyan:#7ee7e0;
+    --cold-white:#eef0f4;
+    --line: rgba(238,240,244,0.14);
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{
+    margin:0; padding:0; width:100%; overflow-x:hidden;
+    background:var(--near-black); color:var(--cold-white);
+    font-family: 'Neue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    scroll-behavior:auto;
+  }
+  ::selection{ background:var(--electric); color:#fff; }
+
+  @font-face{
+    font-family:'Sora';
+    src: local('Sora');
+  }
+
+  h1,h2,h3,p,span{ margin:0; padding:0; }
+
+  .type-display{
+    font-family:'Sora', 'Helvetica Neue', Arial, sans-serif;
+    font-weight:600;
+    letter-spacing:-0.02em;
+  }
+  .type-mono{
+    font-family: 'SFMono-Regular', ui-monospace, 'Roboto Mono', monospace;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+  }
+
+  #canvas-wrap{
+    position:fixed; inset:0; width:100vw; height:100vh; z-index:1;
+    background: radial-gradient(120% 120% at 50% 20%, #101017 0%, #07070a 60%, #030304 100%);
+  }
+  #webgl{ width:100%; height:100%; display:block; touch-action:pan-y; }
+
+  .grain{
+    position:fixed; inset:0; z-index:5; pointer-events:none; opacity:0.05; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .vignette{
+    position:fixed; inset:0; z-index:4; pointer-events:none;
+    background: radial-gradient(120% 100% at 50% 50%, transparent 40%, rgba(0,0,0,0.55) 100%);
+  }
+  .scanlines{
+    position:fixed; inset:0; z-index:6; pointer-events:none; opacity:0.035;
+    background: repeating-linear-gradient(0deg, rgba(255,255,255,0.6) 0px, rgba(255,255,255,0.6) 1px, transparent 1px, transparent 3px);
+  }
+
+  #progress-rail{
+    position:fixed; right:14px; top:50%; transform:translateY(-50%); z-index:40;
+    width:2px; height:120px; background:var(--line); border-radius:2px;
+  }
+  #progress-fill{
+    position:absolute; left:0; top:0; width:100%; height:0%;
+    background:linear-gradient(180deg,var(--cyan),var(--electric));
+    border-radius:2px; transition:height 0.05s linear;
+  }
+  @media (max-width:640px){ #progress-rail{ right:8px; height:90px; } }
+
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:40;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 18px 22px; pointer-events:none;
+  }
+  header.nav .logo{ font-size:14px; letter-spacing:0.22em; pointer-events:auto; opacity:0.9; }
+  header.nav .menu-dot{
+    width:8px; height:8px; border-radius:50%; background:var(--cyan);
+    box-shadow:0 0 12px var(--cyan); pointer-events:auto;
+  }
+
+  .content{ position:relative; z-index:10; }
+
+  .scene{
+    position:relative;
+    min-height:145vh;
+    width:100%;
+  }
+  .scene:last-of-type{ min-height:100vh; }
+
+  .scene-stage{
+    position:sticky; top:0; height:100vh; width:100%;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding: 0 22px;
+    pointer-events:none;
+  }
+  .scene-stage > *{ pointer-events:auto; }
+
+  .eyebrow{
+    font-size:11px; letter-spacing:0.3em; color:var(--cyan); opacity:0.85; margin-bottom:14px;
+    text-transform:uppercase;
+  }
+  .headline{
+    font-size:clamp(28px, 8vw, 64px);
+    line-height:1.02;
+    color:var(--cold-white);
+    text-shadow:0 2px 30px rgba(0,0,0,0.5);
+  }
+  .headline .accent{ color:var(--electric); }
+  .sub{
+    margin-top:16px; max-width:420px; font-size:14px; line-height:1.6; color:rgba(238,240,244,0.62);
+    font-weight:400;
+  }
+
+  .cta{
+    margin-top:34px; display:inline-flex; align-items:center; gap:10px;
+    padding:15px 30px; border:1px solid rgba(238,240,244,0.28); border-radius:100px;
+    background:rgba(238,240,244,0.03); backdrop-filter:blur(6px);
+    font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--cold-white);
+    cursor:pointer; user-select:none; transition:border-color .3s, background .3s, transform .15s;
+  }
+  .cta:hover{ border-color:var(--cyan); background:rgba(126,231,224,0.08); }
+  .cta .arrow{ transition:transform .3s; }
+  .cta:hover .arrow{ transform:translateX(4px); }
+
+  .metrics-hud{
+    position:absolute; inset:0; pointer-events:none;
+  }
+  .metric{
+    position:absolute; opacity:0; transform:translateY(10px);
+    transition:opacity .6s ease, transform .6s ease;
+    font-family:'SFMono-Regular', ui-monospace, monospace;
+  }
+  .metric .num{ font-size:clamp(22px,5vw,40px); color:var(--cold-white); letter-spacing:-0.01em; }
+  .metric .lbl{ font-size:10px; letter-spacing:0.22em; color:var(--cyan); opacity:0.8; margin-top:4px; }
+  .metric.visible{ opacity:1; transform:translateY(0); }
+
+  .m1{ top:20%; left:8%; }
+  .m2{ top:22%; right:8%; text-align:right; }
+  .m3{ bottom:26%; left:10%; }
+  .m4{ bottom:24%; right:9%; text-align:right; }
+  @media (max-width:640px){
+    .m1{ top:16%; left:6%; } .m2{ top:16%; right:6%; }
+    .m3{ bottom:30%; left:6%; } .m4{ bottom:30%; right:6%; }
+    .metric .num{ font-size:22px; }
+  }
+
+  .detail-tag{
+    position:absolute; font-size:10px; letter-spacing:0.16em; text-transform:uppercase;
+    color:rgba(238,240,244,0.55); opacity:0; transition:opacity .6s ease;
+    display:flex; align-items:center; gap:6px;
+  }
+  .detail-tag::before{ content:''; width:14px; height:1px; background:rgba(238,240,244,0.4); }
+  .detail-tag.visible{ opacity:1; }
+  .dt1{ top:30%; left:6%; } .dt2{ top:60%; right:6%; flex-direction:row-reverse; }
+  .dt2::before{ margin-left:0; }
+  @media (max-width:640px){ .dt1,.dt2{ display:none; } }
+
+  footer.finale{
+    position:relative; z-index:10; padding: 60px 22px 50px; text-align:center;
+    background:linear-gradient(180deg, transparent, #020203 60%);
+  }
+  footer.finale .fnav{
+    display:flex; justify-content:center; gap:26px; margin-top:34px; flex-wrap:wrap;
+    font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(238,240,244,0.5);
+  }
+  footer.finale .fnav span{ cursor:pointer; }
+  footer.finale .copyright{ margin-top:40px; font-size:10px; letter-spacing:0.1em; color:rgba(238,240,244,0.3); }
+
+  #preloader{
+    position:fixed; inset:0; z-index:100; background:var(--near-black);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    transition:opacity .9s ease, visibility .9s ease;
+  }
+  #preloader .pl-logo{ font-size:15px; letter-spacing:0.3em; margin-bottom:22px; }
+  #preloader .pl-status{ font-size:10px; letter-spacing:0.22em; color:rgba(238,240,244,0.45); margin-bottom:16px; }
+  #preloader .pl-bar{ width:180px; height:1px; background:rgba(238,240,244,0.15); position:relative; overflow:hidden; }
+  #preloader .pl-fill{ position:absolute; left:0; top:0; height:100%; width:0%; background:var(--cyan); box-shadow:0 0 10px var(--cyan); }
+  #preloader .pl-pct{ margin-top:14px; font-size:11px; color:var(--cold-white); letter-spacing:0.1em; }
+  #preloader.hidden{ opacity:0; visibility:hidden; pointer-events:none; }
+
+  #fallback-note{
+    position:fixed; bottom:16px; left:50%; transform:translateX(-50%); z-index:50;
+    font-size:10px; letter-spacing:0.1em; color:rgba(238,240,244,0.4); text-align:center; display:none;
+  }
+
+  .cursor-dot{
+    position:fixed; width:8px; height:8px; border-radius:50%; background:var(--cyan);
+    top:0; left:0; z-index:60; pointer-events:none; transform:translate(-50%,-50%);
+    transition:transform .15s ease, opacity .3s;
+    display:none;
+  }
+  @media (hover:hover) and (pointer:fine){
+    .cursor-dot{ display:block; }
+  }
+  .cta.magnetic{ will-change:transform; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+  }
+
+  ::-webkit-scrollbar{ width:0; }
+</style>
+</head>
+<body>
+
+<div id="preloader">
+  <div class="pl-logo type-mono">LUMEN&reg;</div>
+  <div class="pl-status type-mono" id="pl-status">Initializing Experience</div>
+  <div class="pl-bar"><div class="pl-fill" id="pl-fill"></div></div>
+  <div class="pl-pct" id="pl-pct">0%</div>
+</div>
+
+<div id="canvas-wrap"><canvas id="webgl"></canvas></div>
+<div class="vignette"></div>
+<div class="grain"></div>
+<div class="scanlines"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<header class="nav">
+  <div class="logo type-mono">LUMEN&reg;</div>
+  <div class="menu-dot"></div>
+</header>
+
+<div id="progress-rail"><div id="progress-fill"></div></div>
+<div id="fallback-note">WebGL unavailable — showing static experience</div>
+
+<main class="content">
+
+  <!-- SCENE 1 — ARRIVAL -->
+  <section class="scene" data-scene="0">
+    <div class="scene-stage">
+      <div class="eyebrow">Lumen — The Next Dimension</div>
+      <h1 class="headline type-display">BEYOND<br/><span class="accent">THE ORDINARY</span></h1>
+      <p class="sub">A new material language. Cast in titanium, sealed in glass, lit from within.</p>
+      <div class="cta magnetic" id="ctaEnter"><span>Enter Experience</span><span class="arrow">→</span></div>
+    </div>
+  </section>
+
+  <!-- SCENE 2 — MACHINE -->
+  <section class="scene" data-scene="1">
+    <div class="scene-stage">
+      <div class="eyebrow">Engineered To Move</div>
+      <h1 class="headline type-display">PRECISION<br/>IN <span class="accent">MOTION</span></h1>
+      <div class="detail-tag dt1" data-tag="1">Forged Chassis</div>
+      <div class="detail-tag dt2" data-tag="1">Adaptive Light Strip</div>
+    </div>
+  </section>
+
+  <!-- SCENE 3 — PERFORMANCE -->
+  <section class="scene" data-scene="2">
+    <div class="scene-stage">
+      <div class="eyebrow">Power Without Limits</div>
+      <h1 class="headline type-display">RAW <span class="accent">PERFORMANCE</span></h1>
+      <div class="metrics-hud" id="hud">
+        <div class="metric m1" data-tag="2"><div class="num">120</div><div class="lbl">FPS Sustained</div></div>
+        <div class="metric m2" data-tag="2"><div class="num">8K</div><div class="lbl">Native Resolution</div></div>
+        <div class="metric m3" data-tag="2"><div class="num">0.8ms</div><div class="lbl">Response Time</div></div>
+        <div class="metric m4" data-tag="2"><div class="num">24H</div><div class="lbl">Continuous Power</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 4 — AUDIO -->
+  <section class="scene" data-scene="3">
+    <div class="scene-stage">
+      <div class="eyebrow">Audio Reimagined</div>
+      <h1 class="headline type-display">HEAR EVERY<br/><span class="accent">DIMENSION</span></h1>
+      <div class="detail-tag dt1" data-tag="3">Titanium Earcup</div>
+      <div class="detail-tag dt2" data-tag="3">Spatial Driver Array</div>
+    </div>
+  </section>
+
+  <!-- SCENE 5 — HABITAT -->
+  <section class="scene" data-scene="4">
+    <div class="scene-stage">
+      <div class="eyebrow">A World Beyond</div>
+      <h1 class="headline type-display">ENTER<br/>THE <span class="accent">FUTURE</span></h1>
+    </div>
+  </section>
+
+  <!-- SCENE 6 — FINALE -->
+  <section class="scene" data-scene="5">
+    <div class="scene-stage">
+      <h1 class="headline type-display">READY TO<br/><span class="accent">GO BEYOND?</span></h1>
+      <div class="cta magnetic" id="ctaDiscover"><span>Discover Now</span><span class="arrow">→</span></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="finale">
+  <div class="type-mono" style="font-size:13px; letter-spacing:0.3em;">LUMEN&reg;</div>
+  <div class="fnav">
+    <span>Instagram</span><span>Support</span><span>Privacy</span><span>Press</span>
+  </div>
+  <div class="copyright">&copy; 2026 LUMEN INDUSTRIES — ALL RIGHTS RESERVED</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+(function(){
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isMobile = Math.min(window.innerWidth, window.innerHeight) < 760 || /Android|iPhone/i.test(navigator.userAgent);
+  var hasPointer = window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+  /* ---------- PRELOADER ---------- */
+  var plFill = document.getElementById('pl-fill');
+  var plPct = document.getElementById('pl-pct');
+  var plStatus = document.getElementById('pl-status');
+  var preloader = document.getElementById('preloader');
+  var pct = 0;
+  var statuses = ['Initializing Experience','Calibrating Optics','Forging Materials','Ready'];
+  var plTimer = setInterval(function(){
+    pct += Math.random()*14 + 4;
+    if(pct >= 100){ pct = 100; clearInterval(plTimer); }
+    plFill.style.width = pct + '%';
+    plPct.textContent = Math.floor(pct) + '%';
+    plStatus.textContent = statuses[Math.min(statuses.length-1, Math.floor(pct/34))];
+    if(pct >= 100){
+      setTimeout(function(){
+        preloader.classList.add('hidden');
+      }, 350);
+    }
+  }, 160);
+
+  /* ---------- CUSTOM CURSOR ---------- */
+  if(hasPointer && !isMobile){
+    var dot = document.getElementById('cursorDot');
+    window.addEventListener('mousemove', function(e){
+      dot.style.transform = 'translate('+(e.clientX-4)+'px,'+(e.clientY-4)+'px)';
+    });
+  }
+
+  /* ---------- MAGNETIC BUTTONS ---------- */
+  if(hasPointer && !isMobile){
+    document.querySelectorAll('.magnetic').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var r = btn.getBoundingClientRect();
+        var x = (e.clientX - r.left - r.width/2) * 0.35;
+        var y = (e.clientY - r.top - r.height/2) * 0.35;
+        btn.style.transform = 'translate('+x+'px,'+y+'px)';
+      });
+      btn.addEventListener('mouseleave', function(){ btn.style.transform = 'translate(0,0)'; });
+    });
+  }
+
+  document.getElementById('ctaEnter').addEventListener('click', function(){
+    window.scrollTo({top: window.innerHeight*1.1, behavior:'smooth'});
+  });
+  document.getElementById('ctaDiscover').addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  /* ---------- SCROLL PROGRESS RAIL ---------- */
+  var progressFill = document.getElementById('progress-fill');
+
+  /* ---------- WEBGL SETUP ---------- */
+  var canvas = document.getElementById('webgl');
+  var renderer, scene, camera;
+  var webglOK = true;
+  try{
+    renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha:false, powerPreference:'high-performance' });
+  }catch(e){ webglOK = false; }
+
+  if(!webglOK || !window.THREE){
+    document.getElementById('fallback-note').style.display = 'block';
+    document.getElementById('canvas-wrap').style.background = 'radial-gradient(120% 120% at 50% 20%, #17151f 0%, #07070a 70%)';
+  } else {
+
+    var W = window.innerWidth, H = window.innerHeight;
+    var DPR = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2);
+    renderer.setPixelRatio(DPR);
+    renderer.setSize(W, H);
+    renderer.setClearColor(0x07070a, 1);
+    renderer.shadowMap.enabled = false;
+
+    scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x07070a, 0.055);
+
+    camera = new THREE.PerspectiveCamera(42, W/H, 0.1, 100);
+    camera.position.set(0, 0, 8);
+
+    /* ---------- LIGHTING ---------- */
+    var hemi = new THREE.HemisphereLight(0x9fb8ff, 0x0a0a10, 0.55);
+    scene.add(hemi);
+
+    var keyLight = new THREE.DirectionalLight(0xffffff, 1.4);
+    keyLight.position.set(4, 6, 6);
+    scene.add(keyLight);
+
+    var rimLight = new THREE.PointLight(0x8b5cf6, 6, 18, 2);
+    rimLight.position.set(-4, 1, -3);
+    scene.add(rimLight);
+
+    var cyanLight = new THREE.PointLight(0x7ee7e0, 4, 14, 2);
+    cyanLight.position.set(3, -2, 2);
+    scene.add(cyanLight);
+
+    var segMul = isMobile ? 0.5 : 1;
+    function seg(n){ return Math.max(6, Math.round(n*segMul)); }
+
+    /* ============================================================
+       GROUP 0 — HERO DEVICE
+    ============================================================ */
+    var g0 = new THREE.Group();
+    var shellGeo = new THREE.IcosahedronGeometry(1.25, isMobile?1:2);
+    var shellMat = new THREE.MeshPhysicalMaterial({
+      color:0xb9bcc4, metalness:0.15, roughness:0.12,
+      transmission: isMobile?0:0.85,
+      transparent:true, opacity: isMobile?0.55:1, clearcoat:1, clearcoatRoughness:0.1,
+      envMapIntensity:1.2
+    });
+    var shell = new THREE.Mesh(shellGeo, shellMat);
+    g0.add(shell);
+
+    var coreGeo = new THREE.SphereGeometry(0.48, seg(32), seg(32));
+    var coreMat = new THREE.MeshStandardMaterial({ color:0x0a0710, emissive:0x8b5cf6, emissiveIntensity:2.2, roughness:0.3, metalness:0.2, transparent:true });
+    var core = new THREE.Mesh(coreGeo, coreMat);
+    g0.add(core);
+
+    var ringMat = new THREE.MeshStandardMaterial({ color:0xcfd2da, metalness:1, roughness:0.28, transparent:true });
+    var ring1 = new THREE.Mesh(new THREE.TorusGeometry(1.7, 0.025, seg(12), seg(80)), ringMat);
+    ring1.rotation.x = Math.PI/2.4;
+    var ring2 = new THREE.Mesh(new THREE.TorusGeometry(1.95, 0.018, seg(12), seg(80)), ringMat.clone());
+    ring2.rotation.x = Math.PI/1.6; ring2.rotation.y = 0.6;
+    g0.add(ring1, ring2);
+
+    var pGeo0 = new THREE.BufferGeometry();
+    var pCount0 = isMobile ? 120 : 400;
+    var pPos0 = new Float32Array(pCount0*3);
+    for(var i=0;i<pCount0;i++){
+      var r = 2.4 + Math.random()*1.8;
+      var th = Math.random()*Math.PI*2, ph = Math.random()*Math.PI;
+      pPos0[i*3] = r*Math.sin(ph)*Math.cos(th);
+      pPos0[i*3+1] = r*Math.cos(ph)*0.6;
+      pPos0[i*3+2] = r*Math.sin(ph)*Math.sin(th);
+    }
+    pGeo0.setAttribute('position', new THREE.BufferAttribute(pPos0,3));
+    var pMat0 = new THREE.PointsMaterial({ color:0x7ee7e0, size:0.02, transparent:true, opacity:0.7 });
+    var particles0 = new THREE.Points(pGeo0, pMat0);
+    g0.add(particles0);
+
+    g0.position.set(0,0,0);
+    scene.add(g0);
+
+    /* ============================================================
+       GROUP 1 — MACHINE
+    ============================================================ */
+    var g1 = new THREE.Group();
+    var metalMat = new THREE.MeshStandardMaterial({ color:0x1c1c22, metalness:0.9, roughness:0.28 });
+    var glassMat = new THREE.MeshPhysicalMaterial({ color:0x2a2a33, metalness:0.1, roughness:0.05, transmission:isMobile?0:0.6, transparent:true, opacity:isMobile?0.6:1 });
+    var stripMat = new THREE.MeshStandardMaterial({ color:0x111116, emissive:0x7ee7e0, emissiveIntensity:2.4, metalness:0.4, roughness:0.4 });
+
+    var chassis = new THREE.Group();
+    var chassisRad = 0.55, chassisBodyLen = 1.5;
+    var chassisBody = new THREE.Mesh(new THREE.CylinderGeometry(chassisRad, chassisRad, chassisBodyLen, seg(16)), metalMat);
+    chassisBody.rotation.z = Math.PI/2;
+    chassis.add(chassisBody);
+    var chassisCapGeo = new THREE.SphereGeometry(chassisRad, seg(16), seg(12), 0, Math.PI*2, 0, Math.PI/2);
+    var chassisCapFront = new THREE.Mesh(chassisCapGeo, metalMat);
+    chassisCapFront.rotation.z = -Math.PI/2;
+    chassisCapFront.position.x = chassisBodyLen/2;
+    chassis.add(chassisCapFront);
+    var chassisCapBack = new THREE.Mesh(chassisCapGeo, metalMat);
+    chassisCapBack.rotation.z = Math.PI/2;
+    chassisCapBack.position.x = -chassisBodyLen/2;
+    chassis.add(chassisCapBack);
+    chassis.scale.set(1, 0.62, 1.15);
+    g1.add(chassis);
+
+    var canopy = new THREE.Mesh(new THREE.SphereGeometry(0.62, seg(24), seg(24), 0, Math.PI*2, 0, Math.PI/2), glassMat);
+    canopy.scale.set(1.4, 0.6, 0.85);
+    canopy.position.set(-0.2, 0.32, 0);
+    g1.add(canopy);
+
+    var wheelGeo = new THREE.TorusGeometry(0.34, 0.12, seg(10), seg(24));
+    var wheelPositions = [[1.15,-0.42,0.55],[1.15,-0.42,-0.55],[-1.15,-0.42,0.55],[-1.15,-0.42,-0.55]];
+    wheelPositions.forEach(function(p){
+      var w = new THREE.Mesh(wheelGeo, metalMat);
+      w.rotation.y = Math.PI/2;
+      w.position.set(p[0],p[1],p[2]);
+      g1.add(w);
+    });
+
+    var stripF = new THREE.Mesh(new THREE.BoxGeometry(0.06,0.05,1.15), stripMat);
+    stripF.position.set(1.62, -0.05, 0);
+    var stripB = stripF.clone(); stripB.position.set(-1.62,-0.05,0);
+    g1.add(stripF, stripB);
+
+    var floorMat = new THREE.MeshStandardMaterial({ color:0x0a0a0d, metalness:0.85, roughness:0.18 });
+    var floor1 = new THREE.Mesh(new THREE.PlaneGeometry(30,30), floorMat);
+    floor1.rotation.x = -Math.PI/2;
+    floor1.position.y = -0.85;
+    g1.add(floor1);
+
+    // cheap mirrored reflection illusion
+    var g1Mirror = g1.clone(true);
+    g1Mirror.traverse(function(o){ if(o.isMesh){ o.material = o.material.clone(); o.material.opacity = 0.16; o.material.transparent = true; } });
+    g1Mirror.scale.y = -1;
+    g1Mirror.position.y = -1.7;
+    g1.add(g1Mirror);
+
+    g1.position.set(0,-0.3,0);
+    scene.add(g1);
+
+    /* ============================================================
+       GROUP 2 — PERFORMANCE / HUD
+    ============================================================ */
+    var g2 = new THREE.Group();
+    var gridMat = new THREE.MeshBasicMaterial({ color:0x2a2a33, wireframe:true, transparent:true, opacity:0.35 });
+    var gridPlane = new THREE.Mesh(new THREE.PlaneGeometry(10,10,seg(20),seg(20)), gridMat);
+    gridPlane.rotation.x = -Math.PI/2.3;
+    gridPlane.position.y = -1.1;
+    g2.add(gridPlane);
+
+    var scanMat = new THREE.MeshBasicMaterial({ color:0x7ee7e0, transparent:true, opacity:0.5, side:THREE.DoubleSide });
+    var scanPlane = new THREE.Mesh(new THREE.PlaneGeometry(3.6, 0.02), scanMat);
+    scanPlane.position.set(0,0,0.4);
+    g2.add(scanPlane);
+
+    var coreRing = new THREE.Mesh(new THREE.TorusGeometry(1.1,0.012,seg(8),seg(90)), new THREE.MeshBasicMaterial({color:0x8b5cf6, transparent:true, opacity:0.7}));
+    g2.add(coreRing);
+    var coreRing2 = new THREE.Mesh(new THREE.TorusGeometry(1.4,0.008,seg(8),seg(90)), new THREE.MeshBasicMaterial({color:0x7ee7e0, transparent:true, opacity:0.5}));
+    coreRing2.rotation.x = Math.PI/2;
+    g2.add(coreRing2);
+
+    g2.position.set(0,0,0);
+    scene.add(g2);
+
+    /* ============================================================
+       GROUP 3 — HEADPHONES
+    ============================================================ */
+    var g3 = new THREE.Group();
+    var hpMetal = new THREE.MeshStandardMaterial({ color:0xb9bcc4, metalness:0.95, roughness:0.22 });
+    var hpCushion = new THREE.MeshStandardMaterial({ color:0x15151a, roughness:0.85, metalness:0.05 });
+    var hpGlass = new THREE.MeshPhysicalMaterial({ color:0x2a2a33, metalness:0.1, roughness:0.05, transmission:isMobile?0:0.7, transparent:true, opacity:isMobile?0.65:1 });
+
+    var headband = new THREE.Mesh(new THREE.TorusGeometry(1.05, 0.05, seg(12), seg(60), Math.PI), hpMetal);
+    headband.rotation.z = Math.PI;
+    g3.add(headband);
+
+    [[-1.05,0],[1.05,0]].forEach(function(p){
+      var earOuter = new THREE.Mesh(new THREE.CylinderGeometry(0.42,0.42,0.22,seg(32)), hpMetal);
+      earOuter.rotation.z = Math.PI/2;
+      earOuter.position.set(p[0], -0.55, 0);
+      var earCushion = new THREE.Mesh(new THREE.TorusGeometry(0.36,0.08,seg(12),seg(32)), hpCushion);
+      earCushion.rotation.y = Math.PI/2;
+      earCushion.position.set(p[0]*1.06, -0.55, 0);
+      var earGlass = new THREE.Mesh(new THREE.CircleGeometry(0.2, seg(24)), hpGlass);
+      earGlass.rotation.y = Math.PI/2;
+      earGlass.position.set(p[0]*1.13, -0.55, 0);
+      var connector = new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,0.35,seg(10)), hpMetal);
+      connector.position.set(p[0], -0.2, 0);
+      g3.add(earOuter, earCushion, earGlass, connector);
+    });
+
+    g3.position.set(0,0.15,0);
+    scene.add(g3);
+
+    /* ============================================================
+       GROUP 4 — HABITAT CORRIDOR
+    ============================================================ */
+    var g4 = new THREE.Group();
+    var ringCount = isMobile ? 8 : 14;
+    var habitatRings = [];
+    for(var r=0;r<ringCount;r++){
+      var ringR = 1.4 + (r%2)*0.15;
+      var col = r%2===0 ? 0x7ee7e0 : 0x8b5cf6;
+      var rm = new THREE.Mesh(new THREE.TorusGeometry(ringR, 0.02, seg(8), seg(48)), new THREE.MeshBasicMaterial({ color:col, transparent:true, opacity:0.55 }));
+      rm.position.z = -r*2.2;
+      habitatRings.push(rm);
+      g4.add(rm);
+    }
+    var pGeo4 = new THREE.BufferGeometry();
+    var pCount4 = isMobile ? 100 : 320;
+    var pPos4 = new Float32Array(pCount4*3);
+    for(var j=0;j<pCount4;j++){
+      pPos4[j*3] = (Math.random()-0.5)*3.2;
+      pPos4[j*3+1] = (Math.random()-0.5)*3.2;
+      pPos4[j*3+2] = -Math.random()*ringCount*2.2;
+    }
+    pGeo4.setAttribute('position', new THREE.BufferAttribute(pPos4,3));
+    var particles4 = new THREE.Points(pGeo4, new THREE.PointsMaterial({ color:0xeef0f4, size:0.015, transparent:true, opacity:0.5 }));
+    g4.add(particles4);
+
+    g4.position.set(0,0,-4);
+    scene.add(g4);
+
+    /* ============================================================
+       GROUP 5 — FINALE (recomposition)
+    ============================================================ */
+    var g5 = new THREE.Group();
+    var fShell = new THREE.Mesh(new THREE.IcosahedronGeometry(1.5, isMobile?1:2), shellMat.clone());
+    g5.add(fShell);
+    var fCore = new THREE.Mesh(new THREE.SphereGeometry(0.55, seg(32), seg(32)), coreMat.clone());
+    g5.add(fCore);
+    var fRing = new THREE.Mesh(new THREE.TorusGeometry(2.1, 0.02, seg(10), seg(80)), new THREE.MeshBasicMaterial({ color:0x7ee7e0, transparent:true, opacity:0.5 }));
+    fRing.rotation.x = Math.PI/2.5;
+    g5.add(fRing);
+    var fRing2 = fRing.clone(); fRing2.material = fRing.material.clone(); fRing2.material.color.set(0x8b5cf6);
+    fRing2.rotation.y = Math.PI/2.2; fRing2.scale.set(1.2,1.2,1.2);
+    g5.add(fRing2);
+
+    g5.position.set(0,0,0);
+    scene.add(g5);
+
+    var allGroups = [g0,g1,g2,g3,g4,g5];
+
+    function setGroupOpacity(g, o){
+      g.visible = o > 0.01;
+      g.traverse(function(m){
+        if(m.isMesh || m.isPoints){
+          if(m.material){
+            m.material.transparent = true;
+            m.material.opacity = (m.userData.baseOpacity!==undefined ? m.userData.baseOpacity : 1) * o;
+          }
+        }
+      });
+    }
+    // capture base opacities
+    allGroups.forEach(function(g){
+      g.traverse(function(m){
+        if((m.isMesh||m.isPoints) && m.material){ m.userData.baseOpacity = m.material.opacity !== undefined ? m.material.opacity : 1; }
+      });
+    });
+
+    /* ---------- CAMERA WAYPOINTS ---------- */
+    // 7 waypoints for 6 scene segments
+    var waypoints = [
+      { pos:new THREE.Vector3(0,0.2,6.5), look:new THREE.Vector3(0,0,0) },   // start scene0
+      { pos:new THREE.Vector3(1.2,0.6,3.4), look:new THREE.Vector3(0,0,0) }, // end scene0 / start scene1
+      { pos:new THREE.Vector3(2.6,0.5,3.0), look:new THREE.Vector3(0,-0.2,0) }, // end scene1 / start scene2
+      { pos:new THREE.Vector3(-1.8,0.4,3.2), look:new THREE.Vector3(0,0,0) },  // end scene2 / start scene3
+      { pos:new THREE.Vector3(1.6,0.1,3.0), look:new THREE.Vector3(0,0.1,0) }, // end scene3 / start scene4
+      { pos:new THREE.Vector3(0,0.3,2.4), look:new THREE.Vector3(0,0,-6) },   // end scene4 / start scene5
+      { pos:new THREE.Vector3(0,0.4,5.2), look:new THREE.Vector3(0,0,0) }     // end scene5
+    ];
+
+    /* ---------- SCROLL DRIVEN PROGRESS (GSAP ScrollTrigger) ---------- */
+    gsap.registerPlugin(ScrollTrigger);
+    var progressState = { t: 0 };
+    ScrollTrigger.create({
+      trigger: document.querySelector('.content'),
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: 0.6,
+      onUpdate: function(self){ progressState.t = self.progress; }
+    });
+
+    var vLook = new THREE.Vector3();
+    var tmpA = new THREE.Vector3(), tmpB = new THREE.Vector3();
+
+    function updateCamera(t){
+      var segCount = 6;
+      var s = t * segCount;
+      var idx = Math.min(segCount-1, Math.floor(s));
+      var local = s - idx;
+      var a = waypoints[idx], b = waypoints[idx+1];
+      tmpA.copy(a.pos); tmpB.copy(b.pos);
+      camera.position.lerpVectors(tmpA, tmpB, local);
+      vLook.lerpVectors(a.look, b.look, local);
+      camera.lookAt(vLook);
+
+      // group crossfade: active group idx visible fully mid-segment, blend at edges with neighbor
+      for(var i=0;i<allGroups.length;i++){
+        var o = 0;
+        if(i === idx) o = 1;
+        if(i === idx+1) o = local;
+        if(i === idx-1) o = 0; // previous fully faded once moved on
+        if(i === idx && idx>0 && local < 0.15){ o = 1; }
+        setGroupOpacity(allGroups[i], o);
+      }
+      // ensure current fades in from previous at start of its segment
+      setGroupOpacity(allGroups[idx], 1);
+      if(idx+1 < allGroups.length) setGroupOpacity(allGroups[idx+1], local);
+
+      // progress rail
+      progressFill.style.height = (t*100) + '%';
+    }
+
+    /* ---------- HUD METRIC + TAG REVEAL ---------- */
+    var metricEls = document.querySelectorAll('.metric');
+    var tagEls = document.querySelectorAll('.detail-tag');
+    function updateHUD(){
+      var winH = window.innerHeight;
+      metricEls.forEach(function(el, i){
+        var r = el.closest('.scene').getBoundingClientRect();
+        var centered = Math.abs(r.top + r.height/2 - winH/2) < winH*0.55;
+        setTimeout(function(){ el.classList.toggle('visible', centered); }, i*60);
+      });
+      tagEls.forEach(function(el){
+        var r = el.closest('.scene').getBoundingClientRect();
+        var centered = Math.abs(r.top + r.height/2 - winH/2) < winH*0.5;
+        el.classList.toggle('visible', centered);
+      });
+    }
+
+    /* ---------- RENDER LOOP ---------- */
+    var clock = new THREE.Clock();
+    var running = true;
+    document.addEventListener('visibilitychange', function(){ running = !document.hidden; });
+
+    function animate(){
+      requestAnimationFrame(animate);
+      if(!running) return;
+      var dt = clock.getDelta();
+      var elapsed = clock.elapsedTime;
+
+      if(!reduceMotion){
+        g0.rotation.y += dt*0.15;
+        ring1.rotation.z += dt*0.1;
+        ring2.rotation.z -= dt*0.08;
+        core.scale.setScalar(1 + Math.sin(elapsed*1.6)*0.04);
+        particles0.rotation.y += dt*0.02;
+
+        chassis.rotation.y = Math.sin(elapsed*0.2)*0.03;
+        wheelPositions.forEach(function(p,i){ g1.children[2+i] && (g1.children[2+i].rotation.x -= dt*1.2); });
+
+        scanPlane.position.y = ((elapsed*0.4) % 1.4) - 0.7;
+        coreRing.rotation.z += dt*0.3;
+        coreRing2.rotation.z -= dt*0.24;
+
+        g3.rotation.y = Math.sin(elapsed*0.25)*0.12;
+
+        habitatRings.forEach(function(rm, i){
+          rm.position.z += dt*0.6;
+          if(rm.position.z > 2.5) rm.position.z -= ringCount*2.2;
+        });
+        particles4.rotation.z += dt*0.01;
+
+        g5.rotation.y += dt*0.12;
+        fRing.rotation.z += dt*0.15;
+        fRing2.rotation.x += dt*0.1;
+      }
+
+      updateCamera(progressState.t);
+      updateHUD();
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    /* ---------- RESIZE ---------- */
+    var resizeTimer;
+    window.addEventListener('resize', function(){
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function(){
+        W = window.innerWidth; H = window.innerHeight;
+        camera.aspect = W/H; camera.updateProjectionMatrix();
+        renderer.setSize(W,H);
+      }, 120);
+    });
+    window.addEventListener('orientationchange', function(){
+      setTimeout(function(){
+        W = window.innerWidth; H = window.innerHeight;
+        camera.aspect = W/H; camera.updateProjectionMatrix();
+        renderer.setSize(W,H);
+      }, 200);
+    });
+  }
+
+})();
+</script>
+
+</body>
+</html>
