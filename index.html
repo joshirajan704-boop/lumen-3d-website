@@ -661,6 +661,29 @@
       waypoints.forEach(function(w){ w.pos.multiplyScalar(1.15); });
     }
 
+    /* ---------- HERO SPHERE VIEWPORT-FIT (mobile) ----------
+       Sizes the solid hero geometry (g0) as a fraction of the ACTUAL
+       device viewport width, computed from the real camera FOV/aspect
+       at the hero's initial camera distance — rather than a fixed
+       scale constant. This keeps the composition consistent across
+       preview frames and real deployed devices, whose viewport/DPR
+       characteristics can differ. Runs on load and on every resize. */
+    var HERO_BASE_RADIUS = 1.25; // shellGeo radius
+    var HERO_TARGET_WIDTH_FRACTION = 0.52; // ~45-60% of viewport width target
+    function fitHeroToViewport(){
+      if(!isMobile) return;
+      var d = waypoints[0].pos.distanceTo(new THREE.Vector3(0,0,0));
+      var vFOVrad = camera.fov * Math.PI / 180;
+      var hFOVrad = 2 * Math.atan(Math.tan(vFOVrad/2) * camera.aspect);
+      var angularWidth = HERO_TARGET_WIDTH_FRACTION * hFOVrad;
+      var desiredWorldRadius = d * Math.tan(angularWidth/2);
+      var localScale = desiredWorldRadius / HERO_BASE_RADIUS / worldScale;
+      // clamp to sane bounds so extreme aspect ratios can't invert the effect
+      localScale = Math.max(0.35, Math.min(localScale, 1.3));
+      g0.scale.setScalar(localScale);
+    }
+    fitHeroToViewport();
+
     /* ---------- SCROLL DRIVEN PROGRESS (GSAP ScrollTrigger) ---------- */
     gsap.registerPlugin(ScrollTrigger);
     var progressState = { t: 0 };
@@ -773,6 +796,7 @@
         W = window.innerWidth; H = window.innerHeight;
         camera.aspect = W/H; camera.updateProjectionMatrix();
         renderer.setSize(W,H);
+        fitHeroToViewport();
       }, 120);
     });
     window.addEventListener('orientationchange', function(){
@@ -780,6 +804,7 @@
         W = window.innerWidth; H = window.innerHeight;
         camera.aspect = W/H; camera.updateProjectionMatrix();
         renderer.setSize(W,H);
+        fitHeroToViewport();
       }, 200);
     });
   }
